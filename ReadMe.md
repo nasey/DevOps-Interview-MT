@@ -34,7 +34,7 @@ This assignment aims to demonstrate the process of deploying a Dockerized Ruby o
 ### Prerequisites
 
 1. AWS Account with appropriate permissions.
-2. RDS Postgres 13.3 Database ( update the credentials in the below mentioned Environment variables)
+2. RDS Postgres Database ( update the credentials in the below mentioned Environment variables)
 3. LoadBalancer  ( update the loadbalancer endpoint in the environment variable)
 4. Docker installed in your local machine.
 5. Your preferred IaC tool ( Terraform, CDK, CloudFormation)
