@@ -151,6 +151,16 @@ S3 access uses the **ECS task IAM role** (no Access Key/Secret Key). RDS uses th
 
 ---
 
+## Networking and VPC endpoints (cost optimization)
+
+- The private subnets **do not use a NAT Gateway**, avoiding per-hour and data-processing costs.
+- Instead, VPC endpoints are provisioned so ECS tasks in private subnets can reach AWS services:
+  - **Gateway endpoint** for **S3**.
+  - **Interface endpoints** for **ECR API**, **ECR DKR**, and **CloudWatch Logs**.
+- This allows image pulls, log shipping, and S3 access entirely over the AWS backbone while keeping all application resources private.
+
+---
+
 ## Destroying infrastructure
 
 ```bash

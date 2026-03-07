@@ -99,6 +99,7 @@ flowchart TB
 | VPC | loyaltri-vpc | 10.0.0.0/16 |
 | Public subnets | public-subnet-1/2 | ALB only |
 | Private subnets | private-subnet-1/2 | ECS, RDS |
+| VPC endpoints | s3, ecr.api, ecr.dkr, logs | Allow ECS tasks to reach S3/ECR/CloudWatch from private subnets without NAT Gateway |
 | ALB | loyaltri-alb | HTTP :80, forwards to ECS |
 | Target group | loyaltri-tg | Port 80, health check / |
 | ECS cluster | loyaltri-ecs-cluster | Fargate |
