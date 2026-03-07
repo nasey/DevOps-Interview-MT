@@ -2,8 +2,8 @@ resource "aws_ecs_task_definition" "app" {
   family                   = "loyaltri-app"
   requires_compatibilities = ["FARGATE"]
   network_mode             = "awsvpc"
-  cpu                      = "1024"
-  memory                   = "2048"
+  cpu                      = "512"
+  memory                   = "1024"
 
   execution_role_arn = aws_iam_role.ecs_task_role.arn
   task_role_arn      = aws_iam_role.ecs_task_role.arn
