@@ -86,5 +86,32 @@ LB_ENDPOINT="loadbalancer endpoint without http"
 nil
 ```
 
+### How to run this assignment
+
+#### Run locally with Docker Compose
+
+- **Build and start containers** from the project root:
+
+  ```bash
+  docker-compose up --build
+  ```
+
+- Access the app at `http://localhost:8080`.
+
+> Local environment variables for the Rails container are defined in `rails_app.env`.
+
+#### Deploy to AWS ECS with Terraform
+
+- All IaC and deployment details live under the `infrastructure/` folder.
+- See:
+  - `infrastructure/README.md` – **build & push images to ECR, Terraform commands, outputs**
+  - `infrastructure/ARCHITECTURE.md` – **architecture diagram and deployment flow**
+
+At a high level:
+
+1. Build and push `rails_app` and `webserver` images to ECR.
+2. From `infrastructure/`, run `terraform init`, `terraform plan`, and `terraform apply`.
+3. Open the Application Load Balancer DNS name (`http://<alb-dns-name>`) in a browser.
+
 ### Note
 This README is a guideline and should be adjusted based on your specific setup and requirements.
