@@ -1,0 +1,106 @@
+# ---------------------------
+
+# Rails / Ruby
+
+# ---------------------------
+
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+/storage/*
+!/storage/.keep
+
+/public/assets
+/public/packs
+/node_modules
+.byebug_history
+.bundle
+
+# Ignore master key if using credentials
+
+/config/master.key
+
+# ---------------------------
+
+# Database files (local only)
+
+# ---------------------------
+
+/db/*.sqlite3*
+*/db/*.sqlite3-journal
+
+# ---------------------------
+
+# Environment variables
+
+# ---------------------------
+
+.env
+.env.*
+*.env
+
+# ---------------------------
+
+# Terraform
+
+# ---------------------------
+
+.terraform/
+*.tfstate*
+*.tfstate.*
+*crash.log*
+*crash.*.log
+
+# Terraform variable files with secrets
+
+*.tfvars
+*.tfvars.json
+
+# Terraform lock file (optional: keep it if you want reproducible builds)
+
+# .terraform.lock.hcl
+
+# ---------------------------
+
+# Docker
+
+# ---------------------------
+
+docker-compose.override.yml
+*.pid
+*.log
+
+# ---------------------------
+
+# OS files
+
+# ---------------------------
+
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ---------------------------
+
+# Editors / IDE
+
+# ---------------------------
+
+.vscode/
+.idea/
+*.code-workspace
+
+# ---------------------------
+
+# Misc
+
+# ---------------------------
+
+coverage/
+dist/
+build/
+*.tar
+*.zip
