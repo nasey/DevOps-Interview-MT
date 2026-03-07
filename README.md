@@ -130,6 +130,27 @@ S3 access uses the **ECS task IAM role** (no Access Key/Secret Key). RDS uses th
 
 ---
 
+## Application container behavior and customizations
+
+- **Rails container (`docker/app/entrypoint.sh`)**:
+  - On start, it runs `bundle check || bundle install`, then Rails database tasks: `db:create`, `db:schema:load`, and `db:migrate`.
+  - It ensures the Puma PID directory exists with `mkdir -p tmp/pids` and removes any stale `tmp/pids/server.pid` file before booting Puma. This prevents the `Errno::ENOENT`/stale PID issues that can otherwise crash the container in ECS.
+
+- **Nginx container (`docker/nginx/default.conf`)**:
+  - The upstream block is configured as:
+
+    ```nginx
+    upstream rails_app {
+      # In ECS, nginx and Rails containers run in the same task and share
+      # the network namespace, so Rails is reached via localhost.
+      server 127.0.0.1:3000;
+    }
+    ```
+
+  - This is intentional for **ECS Fargate**, where both containers in a task share the same network namespace and communicate over `localhost`. The ALB only talks to Nginx on port 80; Nginx then proxies to Rails on `127.0.0.1:3000`.
+
+---
+
 ## Destroying infrastructure
 
 ```bash
