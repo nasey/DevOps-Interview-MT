@@ -9,6 +9,7 @@ bundle exec rails db:create
 bundle exec rails db:schema:load
 bundle exec rails db:migrate
 
+mkdir -p tmp/pids
 if [ -f tmp/pids/server.pid ]; then
   rm tmp/pids/server.pid
 fi
